@@ -68,5 +68,17 @@ module.exports = function(exports){
     test.end()
   })
 
+  tape("metadata (no exports)", function(test){
+    var noExportsPath = "noExports"
+      , noExportsExports = exports[noExportsPath]
+    test.equal(typeof noExportsExports, "object", "exports are object")
+    test.deepEqual(
+      noExportsExports,
+      {},
+      "if no exports, empty object is passed"
+    )
+    test.end()
+  })
+
 
 }
