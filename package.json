@@ -1,0 +1,20 @@
+{
+  "name": "gulp-jade-exports",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jade": "^1.3.1",
+    "gulp": "^3.6.0",
+    "through2": "^0.4.1",
+    "tape": "^2.12.3"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "bloodyowl",
+  "license": "MIT"
+}
