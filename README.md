@@ -24,6 +24,8 @@ block exports
   -exports.tags = ["wow", "very", "seo"]
 ```
 
+### in your gulp file
+
 ```javascript
 var gulp = require("gulp")
   , jade = require("gulp-jade")
