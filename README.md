@@ -1,5 +1,7 @@
 # gulp-jade-exports
 
+![https://travis-ci.org/bloodyowl/gulp-jade-exports](https://travis-ci.org/bloodyowl/gulp-jade-exports.svg)
+
 takes all the `exports` blocks from the given jade files
 to collect information before running the jade task.
 
