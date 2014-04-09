@@ -1,6 +1,5 @@
 var through = require("through2")
   , jade = require("jade")
-  , util = require("gulp-util")
   , path = require("path")
   , exportsRE = /block exports\n((?:(\s+)[\S\s]+\n+)+)?(?:block|$)/
   , jadeExtensionRE = /\.jade$/

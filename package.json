@@ -1,7 +1,7 @@
 {
   "name": "gulp-jade-exports",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "takes all the `exports` blocks from the given jade files to collect information before running the jade task.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -18,5 +18,13 @@
     "test": "tape test/*.js"
   },
   "author": "bloodyowl",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bloodyowl/gulp-jade-exports.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bloodyowl/gulp-jade-exports/issues"
+  },
+  "homepage": "https://github.com/bloodyowl/gulp-jade-exports"
 }
