@@ -1,8 +1,8 @@
 var through = require("through2")
   , jade = require("jade")
   , path = require("path")
-  , exportsRE = /block exports\n((?:(\s+)[\S\s]+\n+)+)?(?:block|$)/
   , jadeExtensionRE = /\.jade$/
+  , whiteSpaceRE = /^(\s+)/
 
 module.exports = exported
 
@@ -13,24 +13,57 @@ function exported(){
 
 function metadata(file, encoding, callback){
   var contents = file.contents.toString()
-    , match = contents.match(exportsRE)
+    , hasExports = contents.indexOf("block exports") != -1
     , compiled
     , template
-    , indentationRE
     , relativePath = toRelativePath(file.path, file.base)
-  if(!match) {
+  if(!hasExports) {
     exported.exports[relativePath] = {}
     this.push(file)
     return callback()
   }
-  indentationRE = RegExp("(?:^|\\n)" + match[2], "g")
-  template = match[1].replace(indentationRE, "\n")
+  template = parseTemplate(contents)
   compiled = jade.compile(template)
   compiled({
     exports : exported.exports[relativePath] = {}
   })
   this.push(file)
   return callback()
+}
+
+function parseTemplate(contents){
+  var block = contents.split("block exports")
+    , indentation = null
+    , template = ""
+    , lines
+    , index = -1, length, line
+
+  block = block[1]
+
+  lines = block.split("\n")
+  indentation = null
+
+  length = lines.length
+
+  while(++index < length) {
+    line = lines[index]
+    if(line == "") {
+      continue
+    }
+    if(indentation == null) {
+      indentation = line.match(whiteSpaceRE)
+      if(indentation == null) {
+        break
+      }
+      indentation = indentation[1]
+    }
+    if(line.indexOf(indentation) != 0) {
+      break
+    }
+    template += line.slice(indentation.length)
+    template += "\n"
+  }
+  return template
 }
 
 function toRelativePath(filePath, basePath){
