@@ -1,5 +1,6 @@
 var through = require("through2")
   , jade = require("jade")
+  , util = require("gulp-util")
   , path = require("path")
   , exportsRE = /block exports\n((?:(\s+)[\S\s]+\n+)+)?(?:block|$)/
   , jadeExtensionRE = /\.jade$/
@@ -20,6 +21,7 @@ function metadata(file, encoding, callback){
     , relativePath = toRelativePath(file.path, file.base)
   if(!match) {
     exported.exports[relativePath] = {}
+    this.push(file)
     return callback()
   }
   indentationRE = RegExp("(?:^|\\n)" + match[2], "g")
@@ -28,6 +30,7 @@ function metadata(file, encoding, callback){
   compiled({
     exports : exported.exports[relativePath] = {}
   })
+  this.push(file)
   return callback()
 }
 
