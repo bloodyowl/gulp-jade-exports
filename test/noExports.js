@@ -5,7 +5,7 @@ var tape = require("tape")
   , jadeExports = require("../")
   , util = require("gulp-util")
 
-tape("metadata", function(test){
+tape("metadata (no exports)", function(test){
   var stream = jadeExports()
     , exports = jadeExports.exports
     , contents = fs.readFileSync(
