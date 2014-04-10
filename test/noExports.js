@@ -22,9 +22,10 @@ tape("metadata (no exports)", function(test){
     test.equal(typeof exports, "object", "exports are object")
     indexExports = exports["noExports"]
     test.equal(typeof indexExports, "object", "exports are object")
+    test.equal(indexExports.slug, "noExports", "exports have slug")
     test.deepEqual(
       indexExports,
-      {},
+      {slug:"noExports"},
       "exports are empty by default"
     )
     test.end()

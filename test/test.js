@@ -23,6 +23,7 @@ tape("metadata", function(test){
     indexExports = exports["test"]
     test.equal(typeof indexExports, "object", "exports are object")
     test.equal(indexExports.title, "homepage", "exports have title")
+    test.equal(indexExports.slug, "test", "exports have slug")
     test.equal(indexExports.description, "some seo content", "exports have desc")
 
     test.end()

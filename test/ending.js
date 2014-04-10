@@ -23,6 +23,7 @@ tape("metadata (ending)", function(test){
     indexExports = exports["ending"]
     test.equal(typeof indexExports, "object", "exports are object")
     test.equal(indexExports.title, "foo", "exports have title")
+    test.equal(indexExports.slug, "ending", "exports have slug")
     test.deepEqual(
       indexExports.tags,
       [

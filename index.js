@@ -17,15 +17,16 @@ function metadata(file, encoding, callback){
     , compiled
     , template
     , relativePath = toRelativePath(file.path, file.base)
+    , baseObject = {slug : relativePath}
   if(!hasExports) {
-    exported.exports[relativePath] = {}
+    exported.exports[relativePath] = baseObject
     this.push(file)
     return callback()
   }
   template = parseTemplate(contents)
   compiled = jade.compile(template)
   compiled({
-    exports : exported.exports[relativePath] = {}
+    exports : exported.exports[relativePath] = baseObject
   })
   this.push(file)
   return callback()

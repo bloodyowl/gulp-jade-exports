@@ -1,6 +1,6 @@
 {
   "name": "gulp-jade-exports",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "takes all the `exports` blocks from the given jade files to collect information before running the jade task.",
   "main": "index.js",
   "directories": {
