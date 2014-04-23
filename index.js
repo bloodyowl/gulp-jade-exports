@@ -2,6 +2,7 @@ var through = require("through2")
   , jade = require("jade")
   , path = require("path")
   , jadeExtensionRE = /\.jade$/
+  , windowsRE = /\\/g
   , whiteSpaceRE = /^(\s+)/
 
 module.exports = exported
@@ -70,4 +71,5 @@ function parseTemplate(contents){
 function toRelativePath(filePath, basePath){
   return path.relative(basePath, filePath)
     .replace(jadeExtensionRE, "")
+    .replace(windowsRE, "/")
 }
