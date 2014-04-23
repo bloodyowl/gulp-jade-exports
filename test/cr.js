@@ -11,7 +11,7 @@ tape("metadata (line endings)", function(test){
     , contents = fs.readFileSync(
         path.resolve(__dirname, "./pages/", "index.jade")
       )
-    , crContents = contents.toString().replace(/\n/g, "\r\n")
+    , crContents = contents.toString().replace(/\r?\n/g, "\r\n")
     , file = new util.File({
         base : path.resolve(__dirname, "./pages/"),
         path : path.resolve(__dirname, "./pages/", "index.jade"),
