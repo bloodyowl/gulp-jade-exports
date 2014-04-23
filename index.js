@@ -4,6 +4,12 @@ var through = require("through2")
   , jadeExtensionRE = /\.jade$/
   , windowsRE = /\\/g
   , whiteSpaceRE = /^(\s+)/
+  , stupidEOLRE = /\r\n/
+  , stupidEOL = "\r\n"
+  , EOL = "\n"
+  , getNewLine = function(fileContents){
+      return stupidEOLRE.test(fileContents) ? stupidEOL : EOL
+    }
 
 module.exports = exported
 
@@ -39,10 +45,11 @@ function parseTemplate(contents){
     , template = ""
     , lines
     , index = -1, length, line
+    , newLine = getNewLine(contents)
 
   block = block[1]
 
-  lines = block.split("\n")
+  lines = block.split(newLine)
   indentation = null
 
   length = lines.length
@@ -63,7 +70,7 @@ function parseTemplate(contents){
       break
     }
     template += line.slice(indentation.length)
-    template += "\n"
+    template += newLine
   }
   return template
 }
