@@ -14,6 +14,10 @@ in the templates afterwards.
 $ npm install gulp-jade-exports
 ```
 
+## notice
+
+your project must have LF line-endings. you can easily configure that using `.gitattributes`.
+
 ## usage
 
 ### in your jade page
